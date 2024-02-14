@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-//Apply css according to your design theme or css that has been given to you in week 2 lab 2
-
+import './Login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
 
@@ -9,8 +8,8 @@ const Login = () => {
 
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState('');
-
   const navigate = useNavigate();
+
   useEffect(() => {
     if (sessionStorage.getItem("auth-token")) {
       navigate("/")
@@ -19,6 +18,17 @@ const Login = () => {
 
   const login = async (e) => {
     e.preventDefault();
+
+// Validate email and password before making the API call
+      if (!email.trim()) {
+          alert('Email is required');
+          return;
+      }
+      if (!password.trim()) {
+        alert('Password is required');
+        return;
+      }
+
     const res = await fetch(`${API_URL}/api/auth/login`, {
       method: "POST",
       headers: {

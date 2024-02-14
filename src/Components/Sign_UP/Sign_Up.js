@@ -9,11 +9,65 @@ const Sign_Up = () => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [showerr, setShowerr] = useState('');
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        password: '',
+    });
 
+    const validateForm = () => {
+        let valid = true;
+        const newErrors = { ...errors };
+
+        // Validate Name
+        if (!name.trim()) {
+            newErrors.name = 'Name is required';
+            valid = false;
+        } else {
+            newErrors.name = '';
+        }
+
+        // Validate Phone
+        if (!phone.trim()) {
+            newErrors.phone = 'Phone number is required';
+            valid = false;
+        } else if (!/^\d{10}$/.test(phone)) {
+            newErrors.phone = 'Phone number must have 10 digits';
+            valid = false;
+        } else {
+            newErrors.phone = '';
+        }
+
+        // Validate Email
+        if (!email.trim()) {
+            newErrors.email = 'Email is required';
+            valid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            newErrors.email = 'Invalid email format';
+            valid = false;
+        } else {
+            newErrors.email = '';
+        }
+
+        // Validate Password
+        if (!password.trim()) {
+            newErrors.password = 'Password is required';
+            valid = false;
+        } else {
+            newErrors.password = '';
+        }
+
+        setErrors(newErrors);
+        return valid;
+    };
     const navigate = useNavigate();
 
     const register = async (e) => {
         e.preventDefault();
+        if (!validateForm()) {
+            return;
+        }
 
         // API Call
         const response = await fetch(`${API_URL}/api/auth/register`, {
@@ -57,7 +111,12 @@ const Sign_Up = () => {
         <div className="signup-grid">
         <div className="signup-form">
          <form method="POST" onSubmit={register}>
-
+         <div className="signup-text">
+         <h1>Sign Up</h1>
+         </div>
+         <div className="signup-text">
+            Already a member? <span><Link to="/Login" style={{ color: '#2190FF' }}> Login</Link></span>
+          </div>
            <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
@@ -75,8 +134,16 @@ const Sign_Up = () => {
                 <label htmlFor="password">Password</label>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
             </div>
-
-//apply logic here for other elements such as name, phone and password to take user information
+            <div className="btn-group">
+                <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">Submit</button>
+              </div>
+              <div className="btn-group">
+                <button type="submit" className="btn btn-danger mb-2 mr-1 waves-effect waves-light">Reset</button>
+              </div>
+            {errors.name && <div className="err" style={{ color: 'red' }}>{errors.name}</div>}
+            {errors.phone && <div className="err" style={{ color: 'red' }}>{errors.phone}</div>}
+            {errors.email && <div className="err" style={{ color: 'red' }}>{errors.email}</div>}
+            {errors.password && <div className="err" style={{ color: 'red' }}>{errors.password}</div>}
          </form>
          </div>
          </div>

@@ -1,14 +1,12 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import './LandingPage.css';  // Asegúrate de importar tu archivo de estilo si es necesario
-
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import './LandingPage.css';  
 const LandingPage = () => {
    return (
     <div>
       <section className="hero-section">
         <div>
           <div data-aos="fade-up" className="flex-hero">
-              
               <h1>
                 Your Health<br/>
                 <span className="text-gradient">

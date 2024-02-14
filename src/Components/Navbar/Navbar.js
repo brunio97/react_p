@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-
+import Sign_Up from "../Sign_UP/Sign_Up";
+import Login from "../Login/Login";
 
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
     const[email,setEmail]=useState("");
     const [showDropdown, setShowDropdown] = useState(false);
+
     const handleClick = () => setClick(!click);
 
-    
     const handleLogout = () => {
         sessionStorage.removeItem("auth-token");
         sessionStorage.removeItem("name");
@@ -81,12 +80,12 @@ const Navbar = () => {
         ) : (
           <>
             <li className="link">
-              <Link to="/signup">
+              <Link to="/Sign_Up">
                 <button className="btn1">Sign Up</button>
               </Link>
             </li>
             <li className="link">
-              <Link to="/login">
+              <Link to="/Login">
                 <button className="btn1">Login</button>
               </Link>
             </li>

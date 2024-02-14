@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div>
       <section className="hero-section">
         <div>
-          <div data-aos="fade-up" class="flex-hero">
+          <div data-aos="fade-up" className="flex-hero">
               
               <h1>
                 Your Health<br/>

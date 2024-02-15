@@ -15,7 +15,19 @@ const Sign_Up = () => {
         phone: '',
         password: '',
     });
-
+    const resetForm = () => {
+        setName('');
+        setEmail('');
+        setPhone('');
+        setPassword('');
+        setErrors({
+            name: '',
+            email: '',
+            phone: '',
+            password: '',
+        });
+        setShowerr('');
+    };
     const validateForm = () => {
         let valid = true;
         const newErrors = { ...errors };
@@ -138,7 +150,7 @@ const Sign_Up = () => {
                 <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">Submit</button>
               </div>
               <div className="btn-group">
-                <button type="submit" className="btn btn-danger mb-2 mr-1 waves-effect waves-light">Reset</button>
+                <button type="submit" className="btn btn-danger mb-2 mr-1 waves-effect waves-light" onClick={resetForm}>Reset</button>
               </div>
             {errors.name && <div className="err" style={{ color: 'red' }}>{errors.name}</div>}
             {errors.phone && <div className="err" style={{ color: 'red' }}>{errors.phone}</div>}

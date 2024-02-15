@@ -33,7 +33,7 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => 
     <div className="doctor-card-container">
       <div className="doctor-card-details-container">
         <div className="doctor-card-profile-image-container">
-        <img src={Doctor} alt={`${name}'s profile`} width="46" height="46" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"/>
+        <img src={Doctor} alt={`${name}'s profile`} width="46" height="46" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16"/>
         </div>
         <div className="doctor-card-details">
           <div className="doctor-card-detail-name">{name}</div>
@@ -72,7 +72,7 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => 
             <div className="doctorbg" style={{ height: '100vh', overflow: 'scroll' }}>
               <div>
                 <div className="doctor-card-profile-image-container">
-                <img src={Doctor} alt={`${name}'s profile`} width="46" height="46" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16" />
+                <img src={Doctor} alt={`${name}'s profile`} width="46" height="46" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16" />
                 
                 </div>
                 <div className="doctor-card-details">

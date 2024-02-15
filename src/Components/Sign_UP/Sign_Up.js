@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
 
 const Sign_Up = () => {
+    const [role, setRole] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -92,6 +93,7 @@ const Sign_Up = () => {
                 email: email,
                 password: password,
                 phone: phone,
+                role: role,
 
             }),
         });
@@ -129,6 +131,23 @@ const Sign_Up = () => {
          <div className="signup-text">
             Already a member? <span><Link to="/Login" style={{ color: '#2190FF' }}> Login</Link></span>
           </div>
+          <div className="form-group">
+            <label htmlFor="role">Role</label>
+            <select
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                name="role"
+                id="role"
+                className="form-control"
+                required
+            >
+                <option value="" disabled hidden>Select Role</option>
+                <option value="Patient">Patient</option>
+                <option value="Doctor">Doctor</option>
+            </select>
+            </div>
+
+          
            <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />

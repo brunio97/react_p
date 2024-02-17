@@ -2,4 +2,4 @@ export const API_URL = window.location.hostname === "localhost" ? "http://localh
 console.log(
     "API_URL :",
     API_URL
-);
+);  

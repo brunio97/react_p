@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import Sign_Up from "../Sign_UP/Sign_Up";
-import Login from "../Login/Login";
-
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
@@ -37,15 +34,25 @@ const Navbar = () => {
     const handleDropdown = () => {
       setShowDropdown(!showDropdown);
     }
-    useEffect(() => { 
+    useEffect(() => {
       const storedemail = sessionStorage.getItem("email");
 
       if (storedemail) {
-            setIsLoggedIn(true);
-            const username = storedemail.split("@")[0];
-            setUsername(username);
-          }
-        }, []);
+          setIsLoggedIn(true);
+          setUsername(storedemail);
+      }
+  }, []);
+
+  useEffect(() => {
+      // Check if the user is already logged in
+      const storedUsername = sessionStorage.getItem("name");
+
+      if (storedUsername) {
+          setIsLoggedIn(true);
+          setUsername(storedUsername);
+      }
+  }, []);
+
   return (
     <nav>
       <div className="nav__logo">

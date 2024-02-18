@@ -20,14 +20,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
       setTime('');
 
     };
-
-    const timeSlots = [
-        '09:00 AM - 11:00 AM',
-        '11:00 AM - 01:00 PM',
-        '01:00 PM - 03:00 PM',
-        '03:00 PM - 05:00 PM',
-      ];
-  
+      
     return (
       <form onSubmit={handleFormSubmit} className="appointment-form">
         <div className="form-group">
@@ -71,12 +64,22 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
           onChange={(e) => setTime(e.target.value)}
           required
         >
-          <option value="">Select a Time Slot</option>
-          {timeSlots.map((slot) => (
-            <option key={slot} value={slot}>
-              {slot}
-            </option>
-          ))}
+          <option value="">Select a time slot</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="9:30 AM">9:30 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="10:30 AM">10:30 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="11:30 AM">11:30 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="2:30 PM">2:30 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="3:30 PM">3:30 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                    <option value="4:30 PM">4:30 PM</option>
+                    <option value="5:00 PM">5:00 PM</option>
+                    <option value="5:30 PM">5:30 PM</option>
         </select>
       </div>
         

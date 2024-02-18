@@ -6,7 +6,7 @@ const Navbar = () => {
     const [click, setClick] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
-    const[email,setEmail]=useState("");
+    const[email, setEmail]=useState("");
     const [showDropdown, setShowDropdown] = useState(false);
 
     const handleClick = () => setClick(!click);
@@ -40,6 +40,9 @@ const Navbar = () => {
       if (storedemail) {
           setIsLoggedIn(true);
           setUsername(storedemail);
+
+          const extractedUsername = storedemail.split("@")[0];
+          setUsername(extractedUsername);
       }
   }, []);
 
@@ -82,7 +85,7 @@ const Navbar = () => {
         {isLoggedIn?(
           <>
             <li className="link">
-            <span className="welcome-user">{username}</span>
+            <span className="welcome-user">Welcome, {username}</span>
               <button className="btn2" onClick={handleLogout}>
                 Logout
               </button>

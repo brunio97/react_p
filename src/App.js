@@ -9,22 +9,24 @@ import Notification from './Components/Notification/Notification';
 import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
 import BookingConsultation from './Components/BookingConsultation';
 import ReviewForm from './Components/ReviewForm/ReviewForm';
-
+import ProfileForm from './Components/ProfileCard/ProfileCard';
+import ReportsLayout from './Components/ReportsLayout/ReportsLayout';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Notification />
+       <Notification />
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign_up" element={<Sign_Up />} />
           <Route path="/instant-consultation" element={<InstantConsultation />} />
+          <Route path='/finddoctor' element={<FindDoctorSearch />} />
           <Route path='/search/doctors' element={<BookingConsultation />} /> 
           <Route path='/reviews' element={<ReviewForm />} />
-
-          
+          <Route path='/profile' element={<ProfileForm />} />
+          <Route path='/reports' element={<ReportsLayout />} />
         </Routes>
       </BrowserRouter>
     </div>

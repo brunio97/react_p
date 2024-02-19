@@ -84,26 +84,40 @@ const Navbar = () => {
         </li>
         {isLoggedIn?(
           <>
-            <li className="link">
-            <span className="welcome-user">Welcome, {username}</span>
-              <button className="btn2" onClick={handleLogout}>
-                Logout
-              </button>
-            </li>
-            
-          </>
-        ) : (
-          <>
-            <li className="link">
-              <Link to="/Sign_Up">
-                <button className="btn1">Sign Up</button>
-              </Link>
-            </li>
-            <li className="link">
-              <Link to="/Login">
-                <button className="btn1">Login</button>
-              </Link>
-            </li>
+             <li onClick={handleDropdown} className="link welcome-user">
+                            <p>
+                                Welcome, {username}
+                            </p>
+                            {showDropdown && (
+                                <ul className="dropdown-menu">
+                                    <li>
+                                        <Link to="/profile">Your Profile</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/reports">Your Reports</Link>
+                                    </li>
+                                </ul>
+                            )}
+                        </li>
+                        <li className="link">
+                            <button className="btn2" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        </li>
+
+                    </>
+                ) : (
+                    <>
+                        <li className="link">
+                            <Link to="/Sign_Up">
+                                <button className="btn1">Sign Up</button>
+                            </Link>
+                        </li>
+                        <li className="link">
+                            <Link to="/Login">
+                                <button className="btn1">Login</button>
+                            </Link>
+                        </li>
           </>
         )}
       </ul>
